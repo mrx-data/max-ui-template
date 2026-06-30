@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>现代官网简约风 - ui-template</title>
+    <meta name="description" content="Interactive modern minimal website UI template.">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body data-page="detail" data-scene="modern" data-modern-theme="light">
+    <canvas id="atmosphere" aria-hidden="true"></canvas>
+    <div class="transition-layer" aria-hidden="true"></div>
+    <div class="page-shell detail-shell">
+      <header class="topbar floating-topbar">
+        <a class="brand" href="../index.html" data-template-link aria-label="Back to ui-template">
+          <span class="brand-mark"></span>
+          <span>ui-template</span>
+        </a>
+        <nav class="nav-links" aria-label="Template switcher">
+          <a href="cyber-future.html" data-template-link>赛博</a>
+          <a href="trend-culture.html" data-template-link>潮流</a>
+          <a href="../index.html" data-template-link>首页</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="detail-hero modern-hero" aria-labelledby="modern-title">
+          <div class="detail-copy">
+            <p class="eyebrow">01 / Modern Minimal</p>
+            <h1 id="modern-title">像主流科技官网一样清爽，但更有动态。</h1>
+            <p class="lede">
+              这套样板适合产品官网、AI 工具、SaaS 发布页和创作者工具页面。主题切换会同步改变组件、背景和 Canvas 粒子色板。
+            </p>
+            <div class="theme-switcher" aria-label="Theme switcher">
+              <button type="button" data-theme-option="light" aria-pressed="true">Light</button>
+              <button type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
+              <button type="button" data-theme-option="aurora" aria-pressed="false">Aurora</button>
+            </div>
+            <div class="hero-actions">
+              <button class="open-button" type="button" data-modal-trigger="modern-preview">预览产品弹窗</button>
+            </div>
+          </div>
+          <div class="website-demo interactive-demo" aria-label="Modern website demo">
+            <div class="website-nav">
+              <span>Orbit Studio</span>
+              <i></i>
+              <i></i>
+              <button type="button" data-modal-trigger="modern-preview">Start</button>
+            </div>
+            <div class="website-panel">
+              <p class="eyebrow">Launch system</p>
+              <h2>Build pages with a calm product rhythm.</h2>
+              <div class="website-metrics">
+                <span><b>24k</b> sessions</span>
+                <span><b>98%</b> uptime</span>
+                <span><b>3.2s</b> flow</span>
+              </div>
+            </div>
+            <div class="website-products">
+              <article>
+                <span></span>
+                <b>Theme aware canvas</b>
+              </article>
+              <article>
+                <span></span>
+                <b>Floating navigation</b>
+              </article>
+              <article>
+                <span></span>
+                <b>Scroll reveal blocks</b>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="interaction-lab modern-interactions" aria-labelledby="modern-interactions-title">
+          <div class="lab-heading">
+            <p class="eyebrow">Common Web Interactions</p>
+            <h2 id="modern-interactions-title">官网常用交互组件演示</h2>
+          </div>
+
+          <div class="lab-grid modern-lab-grid">
+            <div class="feature-tabs" data-tab-group>
+              <div class="tab-list" role="tablist" aria-label="Modern feature tabs">
+                <button id="modern-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="modern-panel-overview" data-tab="overview">Overview</button>
+                <button id="modern-tab-analytics" type="button" role="tab" aria-selected="false" aria-controls="modern-panel-analytics" data-tab="analytics">Analytics</button>
+                <button id="modern-tab-automation" type="button" role="tab" aria-selected="false" aria-controls="modern-panel-automation" data-tab="automation">Automation</button>
+              </div>
+              <article id="modern-panel-overview" class="tab-panel is-active" role="tabpanel" aria-labelledby="modern-tab-overview" data-tab-panel="overview">
+                <p class="eyebrow">Overview</p>
+                <h3>一个清爽的产品入口页。</h3>
+                <p>展示核心价值、关键指标和首个行动按钮，适合 SaaS、AI 工具和独立产品发布。</p>
+                <div class="mini-dashboard">
+                  <span><b>8.4k</b> visitors</span>
+                  <span><b>41%</b> trial start</span>
+                </div>
+              </article>
+              <article id="modern-panel-analytics" class="tab-panel" role="tabpanel" aria-labelledby="modern-tab-analytics" data-tab-panel="analytics" hidden>
+                <p class="eyebrow">Analytics</p>
+                <h3>指标面板随 tab 切换。</h3>
+                <p>用于表现产品洞察、转化漏斗和客户增长，切换时保持官网式克制动效。</p>
+                <div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              </article>
+              <article id="modern-panel-automation" class="tab-panel" role="tabpanel" aria-labelledby="modern-tab-automation" data-tab-panel="automation" hidden>
+                <p class="eyebrow">Automation</p>
+                <h3>自动化流程更像真实产品。</h3>
+                <p>用步骤卡和 CTA 串起页面节奏，避免只有静态 hero 的模板感。</p>
+                <ol class="flow-steps">
+                  <li>Collect</li>
+                  <li>Score</li>
+                  <li>Launch</li>
+                </ol>
+              </article>
+            </div>
+
+            <aside class="pricing-card" data-price-toggle>
+              <div>
+                <p class="eyebrow">Pricing Toggle</p>
+                <h3>Growth</h3>
+              </div>
+              <div class="price-row">
+                <span data-price-value data-monthly="$29" data-yearly="$23">$29</span>
+                <small>/ seat</small>
+              </div>
+              <p data-price-note>Monthly billing for fast experiments.</p>
+              <div class="segmented-control" aria-label="Billing period">
+                <button type="button" class="is-active" aria-pressed="true" data-price-period="monthly">Monthly</button>
+                <button type="button" aria-pressed="false" data-price-period="yearly">Yearly</button>
+              </div>
+            </aside>
+
+            <form class="demo-form" data-form-demo data-success-message="演示请求已发送">
+              <p class="eyebrow">Demo Request</p>
+              <label>
+                <span>姓名</span>
+                <input name="name" type="text" autocomplete="name" placeholder="Echo" required>
+                <small data-field-error></small>
+              </label>
+              <label>
+                <span>邮箱</span>
+                <input name="email" type="email" autocomplete="email" placeholder="hello@example.com" required>
+                <small data-field-error></small>
+              </label>
+              <button class="open-button" type="submit">预约演示</button>
+            </form>
+          </div>
+
+          <div class="accordion modern-faq" data-accordion>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="true" aria-controls="modern-faq-1">
+                主题切换会影响哪些元素？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="modern-faq-1" data-accordion-panel>
+                <p>背景、按钮、卡片边框、阴影、canvas 粒子色板和弹窗都跟随 `body[data-modern-theme]` 更新。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="modern-faq-2">
+                表单交互是真实提交吗？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="modern-faq-2" data-accordion-panel hidden>
+                <p>这里是静态站 demo，会执行前端校验、loading 和成功 toast，不发送网络请求。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="modern-faq-3">
+                Tabs 支持键盘操作吗？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="modern-faq-3" data-accordion-panel hidden>
+                <p>支持左右方向键切换，并同步 `aria-selected`、`tabindex` 和面板显示状态。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="logic-section" data-interaction-logic aria-labelledby="modern-logic">
+          <div>
+            <p class="eyebrow">Interaction Logic</p>
+            <h2 id="modern-logic">主题切换和官网式动效</h2>
+          </div>
+          <div class="logic-grid">
+            <article>
+              <span>01</span>
+              <h3>Theme state</h3>
+              <p>点击 Light、Dark、Aurora 后写入 `body[data-modern-theme]`，并同步保存到 localStorage。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Canvas palette</h3>
+              <p>Canvas scene 读取主题状态，改变粒子、连线和流动光带颜色。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Website rhythm</h3>
+              <p>浮动导航、产品卡和指标块保持官网感，hover 和 reveal 只做轻量位移。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="prompt-lab" aria-labelledby="modern-prompt-title">
+          <div>
+            <p class="eyebrow">Prompt</p>
+            <h2 id="modern-prompt-title">现代官网简约风提示词</h2>
+          </div>
+          <pre id="prompt-modern-detail" class="prompt-text prompt-text-large"><code>设计一个现代官网简约风的前端界面：参考主流科技官网的清晰信息架构、克制留白、锐利排版和高级动效。页面需要支持 Light、Dark、Aurora 三套主题切换，切换时同步改变背景、组件、canvas 粒子和 CTA 氛围。界面包含官网 hero、浮动导航、产品能力卡、客户指标和行动按钮。避免过度装饰和廉价渐变，强调真实产品官网的可信度、节奏和可读性。动效应丰富但克制，包括页面进入转场、滚动 reveal、轻量粒子连接和主题过渡。</code></pre>
+          <button class="copy-button" type="button" data-copy="prompt-modern-detail">复制提示词</button>
+        </section>
+      </main>
+    </div>
+    <div class="modal-backdrop" data-modal="modern-preview" hidden>
+      <section class="modal-card modern-modal-card" role="dialog" aria-modal="true" aria-labelledby="modern-modal-title" tabindex="-1">
+        <button class="modal-close" type="button" data-modal-close aria-label="关闭弹窗">×</button>
+        <p class="eyebrow">Product Preview</p>
+        <h2 id="modern-modal-title">Orbit Studio launch console</h2>
+        <p>这个弹窗演示官网常见的产品截图预览：遮罩、ESC 关闭、点击背景关闭和焦点回收都由统一 modal 内核处理。</p>
+        <div class="modal-preview-grid" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+    </div>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="../main.js"></script>
+  </body>
+</html>

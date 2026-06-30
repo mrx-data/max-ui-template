@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>潮流视觉风 - ui-template</title>
+    <meta name="description" content="Interactive trend culture UI template.">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body data-page="detail" data-scene="trend">
+    <canvas id="atmosphere" aria-hidden="true"></canvas>
+    <div class="transition-layer" aria-hidden="true"></div>
+    <div class="page-shell detail-shell">
+      <header class="topbar floating-topbar">
+        <a class="brand trend-brand" href="../index.html" data-template-link aria-label="Back to ui-template">
+          <span class="brand-mark"></span>
+          <span>ui-template</span>
+        </a>
+        <nav class="nav-links" aria-label="Template switcher">
+          <a href="modern-minimal.html" data-template-link>官网</a>
+          <a href="cyber-future.html" data-template-link>赛博</a>
+          <a href="../index.html" data-template-link>首页</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="detail-hero trend-hero" aria-labelledby="trend-title">
+          <div class="detail-copy">
+            <p class="eyebrow">03 / Trend Culture</p>
+            <h1 id="trend-title">大胆排版、贴纸动效和流动色块。</h1>
+            <p class="lede">
+              这套样板适合潮牌 drop、创意活动、音乐视觉、作品发布和文化项目。点击视觉片段切换主题，Canvas 记录鼠标轨迹。
+            </p>
+          </div>
+          <div class="trend-demo interactive-demo" aria-label="Trend culture demo">
+            <div class="trend-poster" data-trend-poster>
+              <span class="trend-kicker">DROP 06</span>
+              <strong>NOISE<br>WAVE</strong>
+              <button type="button" data-trend-cycle>切换视觉片段</button>
+              <button type="button" class="trend-lookbook-trigger" data-modal-trigger="trend-lookbook">打开 Lookbook</button>
+            </div>
+            <div class="sticker-stack" aria-label="Trend stickers">
+              <span>NEW FORM</span>
+              <span>LIMITED</span>
+              <span>CANVAS TRAIL</span>
+            </div>
+            <div class="drop-cards">
+              <article data-drag-card>Color Pulse</article>
+              <article data-drag-card>Sticker Shift</article>
+              <article data-drag-card>Motion Type</article>
+            </div>
+          </div>
+        </section>
+
+        <section class="interaction-lab trend-interactions" aria-labelledby="trend-interactions-title">
+          <div class="lab-heading">
+            <p class="eyebrow">Common Web Interactions</p>
+            <h2 id="trend-interactions-title">潮流化的活动页交互</h2>
+          </div>
+
+          <div class="lab-grid trend-lab-grid">
+            <div class="drop-carousel" data-carousel>
+              <div class="carousel-viewport">
+                <article class="carousel-slide is-active" data-carousel-slide data-trend-variant-value="yellow">
+                  <span>01</span>
+                  <h3>NOISE WAVE</h3>
+                  <p>黄色主视觉，适合发布首屏和抢眼 CTA。</p>
+                </article>
+                <article class="carousel-slide" data-carousel-slide data-trend-variant-value="blue" hidden>
+                  <span>02</span>
+                  <h3>BLUE ROOM</h3>
+                  <p>冷色视觉片段，适合作品集和音乐活动。</p>
+                </article>
+                <article class="carousel-slide" data-carousel-slide data-trend-variant-value="pink" hidden>
+                  <span>03</span>
+                  <h3>PINK SIGNAL</h3>
+                  <p>高能粉色片段，适合 drop、联名和限量发售。</p>
+                </article>
+              </div>
+              <div class="carousel-controls">
+                <button type="button" data-carousel-prev aria-label="上一张">←</button>
+                <div class="carousel-dots" aria-label="Carousel pagination">
+                  <button type="button" class="is-active" data-carousel-dot="0" aria-label="第 1 张"></button>
+                  <button type="button" data-carousel-dot="1" aria-label="第 2 张"></button>
+                  <button type="button" data-carousel-dot="2" aria-label="第 3 张"></button>
+                </div>
+                <button type="button" data-carousel-next aria-label="下一张">→</button>
+              </div>
+            </div>
+
+            <aside class="variant-card" data-variant-selector>
+              <p class="eyebrow">Variant Selector</p>
+              <h3 data-variant-title>Noise Tee / Acid</h3>
+              <div class="variant-options" aria-label="Product variants">
+                <button type="button" class="is-active" aria-pressed="true" data-variant-option="Noise Tee / Acid">Acid</button>
+                <button type="button" aria-pressed="false" data-variant-option="Wave Cap / Blue">Blue</button>
+                <button type="button" aria-pressed="false" data-variant-option="Signal Bag / Pink">Pink</button>
+              </div>
+              <p data-variant-copy>贴纸式按钮切换商品状态，适合潮牌 drop 和创意活动页。</p>
+            </aside>
+
+            <form class="demo-form trend-form" data-form-demo data-success-message="已加入 drop waitlist">
+              <p class="eyebrow">Waitlist</p>
+              <label>
+                <span>邮箱</span>
+                <input name="email" type="email" placeholder="drop@example.com" required>
+                <small data-field-error></small>
+              </label>
+              <button class="open-button" type="submit">加入名单</button>
+            </form>
+          </div>
+
+          <div class="accordion sticker-faq" data-accordion>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="true" aria-controls="trend-faq-1">
+                DROP 规则是什么？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="trend-faq-1" data-accordion-panel>
+                <p>用贴纸式折叠卡承载活动规则，视觉强但信息仍然清楚。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="trend-faq-2">
+                卡片为什么可以拖？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="trend-faq-2" data-accordion-panel hidden>
+                <p>拖拽感卡片用于制造浏览停顿点，释放后自动回弹，移动端仍保持点击可用。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="trend-faq-3">
+                轮播会同步背景吗？
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="trend-faq-3" data-accordion-panel hidden>
+                <p>轮播读取 slide 的 `data-trend-variant-value`，同步更新 `body[data-trend-variant]`。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="logic-section" data-interaction-logic aria-labelledby="trend-logic">
+          <div>
+            <p class="eyebrow">Interaction Logic</p>
+            <h2 id="trend-logic">色块、贴纸和视觉片段轮播</h2>
+          </div>
+          <div class="logic-grid">
+            <article>
+              <span>01</span>
+              <h3>Visual segment</h3>
+              <p>点击“切换视觉片段”会轮换 `body[data-trend-variant]`，改变海报配色和贴纸角度。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Mouse trail</h3>
+              <p>Canvas 记录鼠标位置，绘制短生命色点和流动色块，形成潮流轨迹感。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Sticker motion</h3>
+              <p>贴纸和 drop 卡使用小幅旋转、pulse 和 hover 位移，保持强视觉但不破坏阅读。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="prompt-lab prompt-lab-trend" aria-labelledby="trend-prompt-title">
+          <div>
+            <p class="eyebrow">Prompt</p>
+            <h2 id="trend-prompt-title">潮流视觉风提示词</h2>
+          </div>
+          <pre id="prompt-trend-detail" class="prompt-text prompt-text-large"><code>设计一个潮流视觉风的前端界面：使用大胆字体、贴纸式标签、动态色块、强烈但有控制的配色和街头/创意品牌气质。页面需要包含大字 hero、产品 drop 卡、文化标签、轮播式视觉片段和可点击主题切换。Canvas 背景绘制流动色块、噪声纹理和鼠标轨迹。避免混乱堆砌，保持潮流表达和内容可读性的平衡。动效应包括贴纸转场、色彩 pulse、hover 位移和轻量页面进入动画。</code></pre>
+          <button class="copy-button" type="button" data-copy="prompt-trend-detail">复制提示词</button>
+        </section>
+      </main>
+    </div>
+    <div class="modal-backdrop" data-modal="trend-lookbook" hidden>
+      <section class="modal-card trend-modal-card" role="dialog" aria-modal="true" aria-labelledby="trend-modal-title" tabindex="-1">
+        <button class="modal-close" type="button" data-modal-close aria-label="关闭弹窗">×</button>
+        <p class="eyebrow">Lookbook</p>
+        <h2 id="trend-modal-title">Noise Wave visual set</h2>
+        <p>Lookbook 弹窗展示活动页常见的大图预览、遮罩关闭和焦点回收，整体保留贴纸、色块和强排版。</p>
+        <div class="lookbook-grid" aria-hidden="true">
+          <span>DROP</span>
+          <span>LIVE</span>
+          <span>2026</span>
+        </div>
+      </section>
+    </div>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="../main.js"></script>
+  </body>
+</html>

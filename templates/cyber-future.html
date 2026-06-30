@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>赛博未来风 - ui-template</title>
+    <meta name="description" content="Interactive cyber future UI template.">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+  <body data-page="detail" data-scene="cyber">
+    <canvas id="atmosphere" aria-hidden="true"></canvas>
+    <div class="transition-layer" aria-hidden="true"></div>
+    <div class="page-shell detail-shell">
+      <header class="topbar floating-topbar">
+        <a class="brand cyber-brand" href="../index.html" data-template-link aria-label="Back to ui-template">
+          <span class="brand-mark"></span>
+          <span>ui-template</span>
+        </a>
+        <nav class="nav-links" aria-label="Template switcher">
+          <a href="modern-minimal.html" data-template-link>官网</a>
+          <a href="trend-culture.html" data-template-link>潮流</a>
+          <a href="../index.html" data-template-link>首页</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="detail-hero cyber-hero" aria-labelledby="cyber-title">
+          <div class="detail-copy">
+            <p class="eyebrow">02 / Cyber Future</p>
+            <h1 id="cyber-title">暗色 HUD、数据流和可点击节点。</h1>
+            <p class="lede">
+              这套样板适合未来感 AI 控制台、实时任务系统和工程监控界面。Canvas 绘制动态网格、扫描线和流动信号。
+            </p>
+          </div>
+          <div class="cyber-demo interactive-demo" aria-label="Cyber HUD demo">
+            <div class="hud-header">
+              <span>NODE ARRAY</span>
+              <b data-cyber-status>SYNC 42%</b>
+              <button class="hud-alert" type="button" data-modal-trigger="cyber-alert">ALERT</button>
+            </div>
+            <div class="hud-map">
+              <button type="button" class="hud-node is-active" data-cyber-node="alpha">A</button>
+              <button type="button" class="hud-node" data-cyber-node="beta">B</button>
+              <button type="button" class="hud-node" data-cyber-node="gamma">C</button>
+              <button type="button" class="hud-node" data-cyber-node="delta">D</button>
+            </div>
+            <div class="hud-queue">
+              <div><span>packet.scan</span><b>running</b></div>
+              <div><span>signal.route</span><b>queued</b></div>
+              <div><span>gate.verify</span><b>armed</b></div>
+            </div>
+            <label class="signal-control">
+              <span>Signal intensity</span>
+              <input type="range" min="20" max="100" value="42" data-signal-range>
+            </label>
+            <div class="signal-presets" aria-label="Signal presets">
+              <button type="button" data-signal-preset="28">Low</button>
+              <button type="button" class="is-active" data-signal-preset="42">Sync</button>
+              <button type="button" data-signal-preset="92">Overdrive</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="interaction-lab cyber-interactions" aria-labelledby="cyber-interactions-title">
+          <div class="lab-heading">
+            <p class="eyebrow">Common Web Interactions</p>
+            <h2 id="cyber-interactions-title">HUD 化的网页交互模式</h2>
+          </div>
+
+          <div class="lab-grid cyber-lab-grid">
+            <div class="hud-tabs" data-tab-group>
+              <div class="tab-list" role="tablist" aria-label="Cyber HUD tabs">
+                <button id="cyber-tab-network" type="button" role="tab" aria-selected="true" aria-controls="cyber-panel-network" data-tab="network">Network</button>
+                <button id="cyber-tab-agents" type="button" role="tab" aria-selected="false" aria-controls="cyber-panel-agents" data-tab="agents">Agents</button>
+                <button id="cyber-tab-security" type="button" role="tab" aria-selected="false" aria-controls="cyber-panel-security" data-tab="security">Security</button>
+              </div>
+              <article id="cyber-panel-network" class="tab-panel is-active" role="tabpanel" aria-labelledby="cyber-tab-network" data-tab-panel="network">
+                <p class="eyebrow">Network</p>
+                <h3>Edge mesh routing</h3>
+                <div class="hud-stat-grid">
+                  <span><b>18ms</b> latency</span>
+                  <span><b>42</b> packets</span>
+                  <span><b>7</b> relays</span>
+                </div>
+              </article>
+              <article id="cyber-panel-agents" class="tab-panel" role="tabpanel" aria-labelledby="cyber-tab-agents" data-tab-panel="agents" hidden>
+                <p class="eyebrow">Agents</p>
+                <h3>Autonomous task swarm</h3>
+                <div class="hud-log-list">
+                  <span>agent.echo :: active</span>
+                  <span>agent.nova :: queued</span>
+                  <span>agent.trace :: armed</span>
+                </div>
+              </article>
+              <article id="cyber-panel-security" class="tab-panel" role="tabpanel" aria-labelledby="cyber-tab-security" data-tab-panel="security" hidden>
+                <p class="eyebrow">Security</p>
+                <h3>Threat shield online</h3>
+                <button class="open-button" type="button" data-modal-trigger="cyber-alert">查看告警详情</button>
+              </article>
+            </div>
+
+            <form class="demo-form cyber-form" data-form-demo data-success-message="访问请求已进入加密队列">
+              <p class="eyebrow">Access Request</p>
+              <label>
+                <span>代号</span>
+                <input name="callsign" type="text" placeholder="operator-07" required>
+                <small data-field-error></small>
+              </label>
+              <label>
+                <span>邮箱</span>
+                <input name="email" type="email" placeholder="operator@example.com" required>
+                <small data-field-error></small>
+              </label>
+              <button class="open-button" type="submit">申请访问</button>
+            </form>
+          </div>
+
+          <div class="accordion cyber-protocols" data-accordion>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="true" aria-controls="cyber-protocol-1">
+                PROTOCOL / NODE HANDSHAKE
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="cyber-protocol-1" data-accordion-panel>
+                <p>节点按钮会更新同步百分比、range 值和局部 glitch，适合任务控制台的状态跃迁。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="cyber-protocol-2">
+                PROTOCOL / SIGNAL PRESET
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="cyber-protocol-2" data-accordion-panel hidden>
+                <p>Low、Sync、Overdrive 会写入同一个 `--signal` 变量，驱动发光强度和 canvas 数据流速度。</p>
+              </div>
+            </article>
+            <article>
+              <button type="button" data-accordion-trigger aria-expanded="false" aria-controls="cyber-protocol-3">
+                PROTOCOL / ACCESS FORM
+                <span aria-hidden="true"></span>
+              </button>
+              <div id="cyber-protocol-3" data-accordion-panel hidden>
+                <p>表单只做本地校验和 loading 动效，不触发网络请求，离线状态下也完整可用。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="logic-section" data-interaction-logic aria-labelledby="cyber-logic">
+          <div>
+            <p class="eyebrow">Interaction Logic</p>
+            <h2 id="cyber-logic">HUD 节点、扫描线和信号强度</h2>
+          </div>
+          <div class="logic-grid">
+            <article>
+              <span>01</span>
+              <h3>Node activation</h3>
+              <p>点击 HUD 节点会切换激活状态，更新同步百分比并触发局部 glitch class。</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Signal range</h3>
+              <p>滑杆控制 `--signal` CSS 变量，同时影响界面发光强度和 Canvas 数据流速度。</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Canvas grid</h3>
+              <p>Canvas 绘制透视网格、扫描线、节点连线和竖向数据流，保持暗色高对比。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="prompt-lab prompt-lab-cyber" aria-labelledby="cyber-prompt-title">
+          <div>
+            <p class="eyebrow">Prompt</p>
+            <h2 id="cyber-prompt-title">赛博未来风提示词</h2>
+          </div>
+          <pre id="prompt-cyber-detail" class="prompt-text prompt-text-large"><code>设计一个赛博未来风的前端界面：使用深色空间、霓虹青紫边线、动态网格、扫描线、数据流和 HUD 面板。界面需要呈现任务队列、状态卡、信号强度控件和可点击节点，交互时产生克制的发光、局部 glitch 和状态跃迁。不要做低质科幻贴图或杂乱光效，重点是精密、冷峻、可操作的未来感工具界面。Canvas 背景应绘制透视网格、信号线和扫描过渡，支持 reduced-motion 降级。</code></pre>
+          <button class="copy-button" type="button" data-copy="prompt-cyber-detail">复制提示词</button>
+        </section>
+      </main>
+    </div>
+    <div class="modal-backdrop" data-modal="cyber-alert" hidden>
+      <section class="modal-card cyber-modal-card" role="dialog" aria-modal="true" aria-labelledby="cyber-modal-title" tabindex="-1">
+        <button class="modal-close" type="button" data-modal-close aria-label="关闭弹窗">×</button>
+        <p class="eyebrow">Alert Drawer</p>
+        <h2 id="cyber-modal-title">Security trace anomaly</h2>
+        <p>局部告警弹窗模拟监控产品的 drawer/modal：打开时带赛博 glitch 感，关闭支持 ESC、遮罩和关闭按钮。</p>
+        <div class="cyber-alert-lines" aria-hidden="true">
+          <span>trace.delta :: 92%</span>
+          <span>packet.hash :: verified</span>
+          <span>mesh.route :: rerouted</span>
+        </div>
+      </section>
+    </div>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="../main.js"></script>
+  </body>
+</html>

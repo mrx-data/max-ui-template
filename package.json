@@ -1,0 +1,11 @@
+{
+  "name": "ui-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A static UI prompt template gallery with canvas visuals.",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "lint": "node scripts/validate-site.mjs",
+    "build": "node scripts/validate-site.mjs --build"
+  }
+}

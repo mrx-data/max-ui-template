@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ui-template</title>
+    <meta
+      name="description"
+      content="Three interactive frontend UI template systems with canvas motion."
+    >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="home" data-scene="home">
+    <canvas id="atmosphere" aria-hidden="true"></canvas>
+    <div class="transition-layer" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#templates" aria-label="ui-template">
+          <span class="brand-mark"></span>
+          <span>ui-template</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#templates">模板</a>
+          <a href="#motion">动效</a>
+          <a href="#prompts">提示词</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="intro home-hero" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">Interactive UI Prompt Gallery</p>
+            <h1 id="page-title">三套可点开的前端 UI 样板</h1>
+            <p class="lede">
+              从常规官网、赛博未来到潮流视觉，每套模板都有独立页面、Canvas 动态背景、交互 demo 和可复制提示词。
+            </p>
+          </div>
+          <dl class="stats" aria-label="Project stats">
+            <div>
+              <dt>Styles</dt>
+              <dd>3</dd>
+            </div>
+            <div>
+              <dt>Pages</dt>
+              <dd>4</dd>
+            </div>
+            <div>
+              <dt>Motion</dt>
+              <dd>Canvas</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section id="templates" class="template-grid" aria-label="UI templates">
+          <article class="template-card template-card-modern" data-template="modern-minimal">
+            <div class="card-topline">
+              <span class="index">01</span>
+              <span class="tone">Modern / Website</span>
+            </div>
+            <h2>现代官网简约风</h2>
+            <p class="summary">
+              类似主流科技官网的清爽结构，支持 Light、Dark、Aurora 主题切换，并加入流动粒子和内容 reveal。
+            </p>
+            <figure class="preview preview-modern" aria-label="Modern Minimal preview">
+              <div class="modern-nav-preview">
+                <span></span>
+                <i></i>
+                <i></i>
+              </div>
+              <div class="modern-hero-preview">
+                <strong></strong>
+                <small></small>
+                <small></small>
+              </div>
+              <div class="modern-card-preview">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </figure>
+            <div class="motion-tags" aria-label="Motion tags">
+              <span>主题切换</span>
+              <span>Canvas 粒子</span>
+              <span>页面转场</span>
+            </div>
+            <pre id="prompt-modern" class="prompt-text"><code>设计一个现代官网简约风的前端界面：参考主流科技官网的清晰信息架构、克制留白、锐利排版和高级动效。页面需要支持 Light、Dark、Aurora 三套主题切换，切换时同步改变背景、组件、canvas 粒子和 CTA 氛围。界面包含官网 hero、浮动导航、产品能力卡、客户指标和行动按钮。避免过度装饰和廉价渐变，强调真实产品官网的可信度、节奏和可读性。</code></pre>
+            <div class="card-actions">
+              <button class="copy-button" type="button" data-copy="prompt-modern">复制提示词</button>
+              <a class="open-button" href="templates/modern-minimal.html" data-template-link>打开样板</a>
+            </div>
+          </article>
+
+          <article class="template-card template-card-cyber" data-template="cyber-future">
+            <div class="card-topline">
+              <span class="index">02</span>
+              <span class="tone">Cyber / Future</span>
+            </div>
+            <h2>赛博未来风</h2>
+            <p class="summary">
+              暗色界面、霓虹边线、HUD 数据层、扫描线和动态网格，适合 AI 控制台、实时任务和沉浸式工具。
+            </p>
+            <figure class="preview preview-cyber" aria-label="Cyber Future preview">
+              <div class="cyber-grid-preview"></div>
+              <div class="cyber-hud-preview">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="cyber-node-preview"></div>
+            </figure>
+            <div class="motion-tags" aria-label="Motion tags">
+              <span>扫描线</span>
+              <span>节点激活</span>
+              <span>HUD 动态</span>
+            </div>
+            <pre id="prompt-cyber" class="prompt-text"><code>设计一个赛博未来风的前端界面：使用深色空间、霓虹青紫边线、动态网格、扫描线、数据流和 HUD 面板。界面需要呈现任务队列、状态卡、信号强度控件和可点击节点，交互时产生克制的发光、局部 glitch 和状态跃迁。不要做低质科幻贴图或杂乱光效，重点是精密、冷峻、可操作的未来感工具界面。</code></pre>
+            <div class="card-actions">
+              <button class="copy-button" type="button" data-copy="prompt-cyber">复制提示词</button>
+              <a class="open-button" href="templates/cyber-future.html" data-template-link>打开样板</a>
+            </div>
+          </article>
+
+          <article class="template-card template-card-trend" data-template="trend-culture">
+            <div class="card-topline">
+              <span class="index">03</span>
+              <span class="tone">Trend / Culture</span>
+            </div>
+            <h2>潮流视觉风</h2>
+            <p class="summary">
+              大胆排版、贴纸卡片、流动色块和鼠标轨迹，适合潮牌、创意活动、作品发布和文化项目。
+            </p>
+            <figure class="preview preview-trend" aria-label="Trend Culture preview">
+              <div class="trend-poster-preview">DROP</div>
+              <span class="trend-sticker-preview">NEW</span>
+              <span class="trend-chip-preview"></span>
+            </figure>
+            <div class="motion-tags" aria-label="Motion tags">
+              <span>流动色块</span>
+              <span>贴纸转场</span>
+              <span>视觉片段</span>
+            </div>
+            <pre id="prompt-trend" class="prompt-text"><code>设计一个潮流视觉风的前端界面：使用大胆字体、贴纸式标签、动态色块、强烈但有控制的配色和街头/创意品牌气质。页面需要包含大字 hero、产品 drop 卡、文化标签、轮播式视觉片段和可点击主题切换。Canvas 背景绘制流动色块、噪声纹理和鼠标轨迹。避免混乱堆砌，保持潮流表达和内容可读性的平衡。</code></pre>
+            <div class="card-actions">
+              <button class="copy-button" type="button" data-copy="prompt-trend">复制提示词</button>
+              <a class="open-button" href="templates/trend-culture.html" data-template-link>打开样板</a>
+            </div>
+          </article>
+        </section>
+
+        <section id="motion" class="principles" aria-labelledby="motion-title">
+          <p class="eyebrow">Canvas System</p>
+          <h2 id="motion-title">每套样板都有独立动效场景</h2>
+          <div class="principle-list">
+            <p>首页使用轻量粒子连接，进入详情页时触发 canvas wipe 转场。</p>
+            <p>详情页根据风格切换不同 canvas scene：官网粒子、赛博网格、潮流色块。</p>
+            <p>所有动画都响应 reduced-motion，降低运动强度但保留可用界面。</p>
+          </div>
+        </section>
+
+        <section id="prompts" class="prompt-note" aria-label="Prompt note">
+          <p>
+            打开任意样板页即可查看完整交互逻辑、操作 demo 和可复制提示词。
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="main.js"></script>
+  </body>
+</html>
