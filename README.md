@@ -11,7 +11,10 @@
 | `templates/cyber-future.html` | Cyber future HUD template |
 | `templates/trend-culture.html` | Trend culture template |
 | `styles.css` | Visual system, responsive layout, template previews |
-| `main.js` | Canvas scenes, transitions, copy buttons, template interactions |
+| `src/main.ts` | Vite TypeScript entry that initializes scenes and interactions |
+| `src/canvas.ts` | Canvas scene registry and motion state |
+| `src/interactions/` | Modular interaction initializers for copy, tabs, modals, forms, carousel, and template demos |
+| `vite.config.ts` | Vite multi-page build inputs |
 | `scripts/validate-site.mjs` | Static validation for required structure |
 | `AGENTS.md` | Agent workflow, boundaries, verification, write-back |
 
@@ -21,9 +24,10 @@
 npm run dev
 npm run lint
 npm run build
+npm run preview
 ```
 
-The site can also be opened directly from `index.html`.
+Use `npm run dev` for local development. Production output is generated into `dist/` by `npm run build`.
 
 ## First Phase Scope
 
@@ -32,4 +36,4 @@ The site can also be opened directly from `index.html`.
 - Each template includes a preview, motion tags, interaction logic, and reusable prompt.
 - Prompt copy buttons work without a backend.
 - Canvas scenes are decorative, lightweight, and non-blocking.
-- No external services, secrets, or runtime dependencies.
+- Vite and TypeScript are development/build-time tools only; the site still has no backend, secrets, or external runtime services.

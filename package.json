@@ -4,8 +4,15 @@
   "private": true,
   "description": "A static UI prompt template gallery with canvas visuals.",
   "scripts": {
-    "dev": "python3 -m http.server 4173",
-    "lint": "node scripts/validate-site.mjs",
-    "build": "node scripts/validate-site.mjs --build"
+    "dev": "vite --host 127.0.0.1 --port 4173",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/validate-site.mjs && npm run typecheck",
+    "build": "npm run lint && vite build"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.7"
   }
 }

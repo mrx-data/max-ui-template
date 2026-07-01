@@ -17,10 +17,16 @@ function assert(condition, message) {
 const requiredFiles = [
   "index.html",
   "styles.css",
-  "main.js",
   "package.json",
+  "tsconfig.json",
+  "vite.config.ts",
   "README.md",
   "AGENTS.md",
+  "src/main.ts",
+  "src/dom.ts",
+  "src/canvas.ts",
+  "src/interactions/common.ts",
+  "src/interactions/templates.ts",
   "templates/modern-minimal.html",
   "templates/cyber-future.html",
   "templates/trend-culture.html"
@@ -38,7 +44,16 @@ const htmlFiles = [
 ];
 
 const css = read("styles.css");
-const js = read("main.js");
+const packageJson = JSON.parse(read("package.json"));
+const sourceFiles = [
+  "src/main.ts",
+  "src/dom.ts",
+  "src/canvas.ts",
+  "src/interactions/common.ts",
+  "src/interactions/templates.ts",
+  "vite.config.ts"
+];
+const ts = sourceFiles.map((file) => read(file)).join("\n");
 const agents = read("AGENTS.md");
 const pages = Object.fromEntries(htmlFiles.map((file) => [file, read(file)]));
 const allHtml = Object.values(pages).join("\n");
@@ -46,9 +61,19 @@ const allHtml = Object.values(pages).join("\n");
 htmlFiles.forEach((file) => {
   const html = pages[file];
   assert(html.includes('id="atmosphere"'), `${file}: canvas #atmosphere is missing`);
-  assert(html.includes("main.js"), `${file}: script reference is missing`);
+  assert(html.includes('type="module" src="/src/main.ts"'), `${file}: Vite TypeScript entry script is missing`);
+  assert(!html.includes("main.js"), `${file}: legacy main.js reference must be removed`);
   assert(!/(?:src|href)="https?:\/\//.test(html), `${file}: external runtime references are not allowed`);
 });
+
+assert(packageJson.scripts?.dev?.includes("vite"), "npm run dev must use Vite");
+assert(packageJson.scripts?.build?.includes("vite build"), "npm run build must run Vite build");
+assert(packageJson.scripts?.typecheck?.includes("tsc --noEmit"), "typecheck script must run TypeScript");
+assert(packageJson.devDependencies?.vite, "Vite devDependency is missing");
+assert(packageJson.devDependencies?.typescript, "TypeScript devDependency is missing");
+assert(read("vite.config.ts").includes("templates/modern-minimal.html"), "Vite config must include modern detail page input");
+assert(read("vite.config.ts").includes("templates/cyber-future.html"), "Vite config must include cyber detail page input");
+assert(read("vite.config.ts").includes("templates/trend-culture.html"), "Vite config must include trend detail page input");
 
 assert((pages["index.html"].match(/data-template-link/g) || []).length >= 3, "Homepage must link to three template detail pages");
 assert(pages["index.html"].includes("templates/modern-minimal.html"), "Homepage missing modern detail link");
@@ -115,14 +140,14 @@ assert(copyCount >= 6, `Expected at least 6 copy buttons across pages, found ${c
   "trendScene",
   "transitionScene"
 ].forEach((scene) => {
-  assert(js.includes(scene), `main.js missing scene registry entry: ${scene}`);
+  assert(ts.includes(scene), `src canvas module missing scene registry entry: ${scene}`);
 });
 
-assert(js.includes("data-theme-option"), "Theme switch interaction is missing");
-assert(js.includes("data-cyber-node"), "Cyber node interaction is missing");
-assert(js.includes("data-trend-cycle"), "Trend cycle interaction is missing");
-assert(js.includes("data-template-link"), "Template transition interaction is missing");
-assert(js.includes("navigator.clipboard"), "Clipboard copy path is missing");
+assert(ts.includes("data-theme-option"), "Theme switch interaction is missing");
+assert(ts.includes("data-cyber-node"), "Cyber node interaction is missing");
+assert(ts.includes("data-trend-cycle"), "Trend cycle interaction is missing");
+assert(ts.includes("data-template-link"), "Template transition interaction is missing");
+assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
 
 [
   "initTabs",
@@ -134,7 +159,15 @@ assert(js.includes("navigator.clipboard"), "Clipboard copy path is missing");
   "initVariantSelectors",
   "initDragCards"
 ].forEach((initializer) => {
-  assert(js.includes(initializer), `main.js missing interaction initializer: ${initializer}`);
+  assert(ts.includes(initializer), `src interaction modules missing initializer: ${initializer}`);
+});
+
+[
+  "src/canvas.ts",
+  "src/interactions/common.ts",
+  "src/interactions/templates.ts"
+].forEach((modulePath) => {
+  assert(read("src/main.ts").includes(modulePath.replace("src/", "./").replace(".ts", "")), `src/main.ts must import ${modulePath}`);
 });
 
 assert(css.includes("@media"), "Responsive media queries are missing");
