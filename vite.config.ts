@@ -16,7 +16,8 @@ export default defineConfig({
         home: resolve(__dirname, "index.html"),
         modernMinimal: resolve(__dirname, "templates/modern-minimal.html"),
         cyberFuture: resolve(__dirname, "templates/cyber-future.html"),
-        trendCulture: resolve(__dirname, "templates/trend-culture.html")
+        trendCulture: resolve(__dirname, "templates/trend-culture.html"),
+        personalPortfolio: resolve(__dirname, "templates/personal-portfolio.html")
       }
     }
   }

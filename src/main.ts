@@ -9,7 +9,14 @@ import {
   initTabs,
   initTemplateLinks
 } from "./interactions/common";
-import { initCyberDemo, initDragCards, initModernTheme, initTrendDemo, initVariantSelectors } from "./interactions/templates";
+import {
+  initCyberDemo,
+  initDragCards,
+  initModernTheme,
+  initPortfolioDemo,
+  initTrendDemo,
+  initVariantSelectors
+} from "./interactions/templates";
 
 initCanvasScenes();
 initCopyButtons();
@@ -25,3 +32,4 @@ initCyberDemo();
 initVariantSelectors();
 initDragCards();
 initTrendDemo();
+initPortfolioDemo();

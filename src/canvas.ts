@@ -235,6 +235,37 @@ const scenes: Record<string, Scene> = {
       if (trail.life <= 0) state.trails.splice(index, 1);
     });
   },
+  portfolioScene(ctx) {
+    ctx.fillStyle = "rgba(116, 20, 28, 0.055)";
+    ctx.fillRect(0, 0, state.width, state.height);
+
+    const accent = cssValue("--accent", "#d84b57");
+    const accentTwo = cssValue("--accent-2", "#ffb15c");
+    drawParticleField(ctx, [`${accent}34`, `${accentTwo}22`, "rgba(255, 244, 230, 0.12)"]);
+
+    const sweep = (state.time * 1.6) % (state.width + 420) - 210;
+    const beam = ctx.createLinearGradient(sweep - 180, 0, sweep + 180, state.height);
+    beam.addColorStop(0, "rgba(216, 75, 87, 0)");
+    beam.addColorStop(0.5, "rgba(216, 75, 87, 0.14)");
+    beam.addColorStop(1, "rgba(255, 177, 92, 0)");
+    ctx.fillStyle = beam;
+    ctx.beginPath();
+    ctx.moveTo(sweep - 260, 0);
+    ctx.lineTo(sweep + 80, 0);
+    ctx.lineTo(sweep + 360, state.height);
+    ctx.lineTo(sweep + 20, state.height);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = "rgba(255, 244, 230, 0.05)";
+    ctx.lineWidth = 1;
+    for (let y = (state.time * 0.18) % 34; y < state.height; y += 34) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(state.width, y + Math.sin(y / 80) * 10);
+      ctx.stroke();
+    }
+  },
   transitionScene() {}
 };
 

@@ -6,7 +6,7 @@
     <title>ui-template</title>
     <meta
       name="description"
-      content="Three interactive frontend UI template systems with canvas motion."
+      content="Four interactive frontend UI template systems with canvas motion."
     >
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
@@ -31,19 +31,19 @@
         <section class="intro home-hero" aria-labelledby="page-title">
           <div class="intro-copy">
             <p class="eyebrow">Interactive UI Prompt Gallery</p>
-            <h1 id="page-title">三套可点开的前端 UI 样板</h1>
+            <h1 id="page-title">四套可点开的前端 UI 样板</h1>
             <p class="lede">
-              从常规官网、赛博未来到潮流视觉，每套模板都有独立页面、Canvas 动态背景、交互 demo 和可复制提示词。
+              从常规官网、赛博未来、潮流视觉到个人作品集，每套模板都有独立页面、Canvas 动态背景、交互 demo 和可复制提示词。
             </p>
           </div>
           <dl class="stats" aria-label="Project stats">
             <div>
               <dt>Styles</dt>
-              <dd>3</dd>
+              <dd>4</dd>
             </div>
             <div>
               <dt>Pages</dt>
-              <dd>4</dd>
+              <dd>5</dd>
             </div>
             <div>
               <dt>Motion</dt>
@@ -146,6 +146,36 @@
               <a class="open-button" href="templates/trend-culture.html" data-template-link>打开样板</a>
             </div>
           </article>
+
+          <article class="template-card template-card-portfolio" data-template="personal-portfolio">
+            <div class="card-topline">
+              <span class="index">04</span>
+              <span class="tone">Portfolio / Personal Brand</span>
+            </div>
+            <h2>个人作品集网站</h2>
+            <p class="summary">
+              根据教程方法，把简历升级成真实个人网站：固定磨砂导航、强视觉首屏、作品筛选、案例弹窗和联系表单。
+            </p>
+            <figure class="preview preview-portfolio" aria-label="Personal Portfolio preview">
+              <div class="portfolio-reel-preview">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="portfolio-name-preview">M</div>
+              <span class="portfolio-glow-preview"></span>
+            </figure>
+            <div class="motion-tags" aria-label="Motion tags">
+              <span>作品筛选</span>
+              <span>磨砂导航</span>
+              <span>发光卡片</span>
+            </div>
+            <pre id="prompt-portfolio" class="prompt-text"><code>设计一个真实可用的个人作品集网站，而不是普通 PDF 简历网页。页面需要包含固定磨砂导航、强视觉首屏、showreel/视频感背景、精选作品、经历方法论、能力标签、联系表单和案例弹窗。风格使用暗色空间、深红主色、细颗粒噪声、卡片边缘发光和高级 hover 动效。作品模块支持筛选，表单有本地校验和成功反馈，最终效果要像真实上线的网站。</code></pre>
+            <div class="card-actions">
+              <button class="copy-button" type="button" data-copy="prompt-portfolio">复制提示词</button>
+              <a class="open-button" href="templates/personal-portfolio.html" data-template-link>打开样板</a>
+            </div>
+          </article>
         </section>
 
         <section id="motion" class="principles" aria-labelledby="motion-title">
@@ -153,7 +183,7 @@
           <h2 id="motion-title">每套样板都有独立动效场景</h2>
           <div class="principle-list">
             <p>首页使用轻量粒子连接，进入详情页时触发 canvas wipe 转场。</p>
-            <p>详情页根据风格切换不同 canvas scene：官网粒子、赛博网格、潮流色块。</p>
+            <p>详情页根据风格切换不同 canvas scene：官网粒子、赛博网格、潮流色块、作品集暗红光场。</p>
             <p>所有动画都响应 reduced-motion，降低运动强度但保留可用界面。</p>
           </div>
         </section>

@@ -4,7 +4,7 @@
 
 ui-template is a static frontend UI prompt gallery at `/Users/echo/Documents/work_develop/ui-template`.
 
-The current version shows three different UI styles on the homepage and opens each style in a dedicated interactive detail page. Each template includes a visual demo, interaction logic, canvas scene, and reusable prompt. The site uses HTML, CSS, TypeScript modules, Vite, and Canvas. It has no backend, database, external scripts, or runtime service dependencies.
+The current version shows four different UI styles on the homepage and opens each style in a dedicated interactive detail page. Each template includes a visual demo, interaction logic, canvas scene, and reusable prompt. The site uses HTML, CSS, TypeScript modules, Vite, and Canvas. It has no backend, database, external scripts, or runtime service dependencies.
 
 ## Commands
 
@@ -41,7 +41,7 @@ Do not create `.env`, `.env.local`, tokens, cookies, or secret-bearing files unl
 
 - Keep Vite and TypeScript as build-time tooling. Do not add more npm dependencies unless the user explicitly asks for a new capability.
 - Keep cards at 8px radius or less.
-- Preserve three clearly distinct styles unless the task is specifically about replacing or expanding them: modern website, cyber future, and trend culture.
+- Preserve four clearly distinct styles unless the task is specifically about replacing or expanding them: modern website, cyber future, trend culture, and personal portfolio.
 - Keep dedicated detail pages linked from the homepage with `data-template-link`.
 - Keep `body[data-page]` and `body[data-scene]` markers aligned with the scene registry in `src/canvas.ts`.
 - Treat prompt text as product content. If prompt structure changes, update validation and the KB project pages.
@@ -61,9 +61,10 @@ For UI changes, also perform a manual smoke check:
 
 - Run `npm run dev`.
 - Confirm the canvas background renders.
-- Confirm all three template cards are visible.
-- Confirm all three detail pages open.
+- Confirm all four template cards are visible.
+- Confirm all four detail pages open.
 - Confirm modern theme switching, cyber node/range controls, and trend visual-cycle controls work.
+- Confirm portfolio showreel toggle, case filtering, modal, and contact form work.
 - Confirm prompt copy buttons show success feedback.
 - Check mobile-width layout for overflow or clipped text.
 

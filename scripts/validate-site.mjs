@@ -29,7 +29,8 @@ const requiredFiles = [
   "src/interactions/templates.ts",
   "templates/modern-minimal.html",
   "templates/cyber-future.html",
-  "templates/trend-culture.html"
+  "templates/trend-culture.html",
+  "templates/personal-portfolio.html"
 ];
 
 requiredFiles.forEach((file) => {
@@ -40,7 +41,8 @@ const htmlFiles = [
   "index.html",
   "templates/modern-minimal.html",
   "templates/cyber-future.html",
-  "templates/trend-culture.html"
+  "templates/trend-culture.html",
+  "templates/personal-portfolio.html"
 ];
 
 const css = read("styles.css");
@@ -74,16 +76,19 @@ assert(packageJson.devDependencies?.typescript, "TypeScript devDependency is mis
 assert(read("vite.config.ts").includes("templates/modern-minimal.html"), "Vite config must include modern detail page input");
 assert(read("vite.config.ts").includes("templates/cyber-future.html"), "Vite config must include cyber detail page input");
 assert(read("vite.config.ts").includes("templates/trend-culture.html"), "Vite config must include trend detail page input");
+assert(read("vite.config.ts").includes("templates/personal-portfolio.html"), "Vite config must include portfolio detail page input");
 
-assert((pages["index.html"].match(/data-template-link/g) || []).length >= 3, "Homepage must link to three template detail pages");
+assert((pages["index.html"].match(/data-template-link/g) || []).length >= 4, "Homepage must link to four template detail pages");
 assert(pages["index.html"].includes("templates/modern-minimal.html"), "Homepage missing modern detail link");
 assert(pages["index.html"].includes("templates/cyber-future.html"), "Homepage missing cyber detail link");
 assert(pages["index.html"].includes("templates/trend-culture.html"), "Homepage missing trend detail link");
+assert(pages["index.html"].includes("templates/personal-portfolio.html"), "Homepage missing portfolio detail link");
 
 [
   "templates/modern-minimal.html",
   "templates/cyber-future.html",
-  "templates/trend-culture.html"
+  "templates/trend-culture.html",
+  "templates/personal-portfolio.html"
 ].forEach((file) => {
   const html = pages[file];
   assert(html.includes('data-page="detail"'), `${file}: detail page marker missing`);
@@ -117,6 +122,14 @@ const interactionRequirements = {
     "data-accordion",
     "data-modal=\"trend-lookbook\"",
     "data-drag-card"
+  ],
+  "templates/personal-portfolio.html": [
+    "data-portfolio-reel",
+    "data-portfolio-reel-toggle",
+    "data-portfolio-filter",
+    "data-portfolio-card",
+    "data-form-demo",
+    "data-modal=\"portfolio-case\""
   ]
 };
 
@@ -129,15 +142,16 @@ Object.entries(interactionRequirements).forEach(([file, markers]) => {
 const homeCards = (pages["index.html"].match(/class="[^"]*\btemplate-card\b[^"]*"/g) || []).length;
 const promptCount = (allHtml.match(/id="prompt-[^"]+"/g) || []).length;
 const copyCount = (allHtml.match(/data-copy="prompt-[^"]+"/g) || []).length;
-assert(homeCards >= 3, `Expected at least 3 homepage template cards, found ${homeCards}`);
-assert(promptCount >= 6, `Expected at least 6 prompt blocks across pages, found ${promptCount}`);
-assert(copyCount >= 6, `Expected at least 6 copy buttons across pages, found ${copyCount}`);
+assert(homeCards >= 4, `Expected at least 4 homepage template cards, found ${homeCards}`);
+assert(promptCount >= 8, `Expected at least 8 prompt blocks across pages, found ${promptCount}`);
+assert(copyCount >= 8, `Expected at least 8 copy buttons across pages, found ${copyCount}`);
 
 [
   "homeScene",
   "modernScene",
   "cyberScene",
   "trendScene",
+  "portfolioScene",
   "transitionScene"
 ].forEach((scene) => {
   assert(ts.includes(scene), `src canvas module missing scene registry entry: ${scene}`);
@@ -146,6 +160,7 @@ assert(copyCount >= 6, `Expected at least 6 copy buttons across pages, found ${c
 assert(ts.includes("data-theme-option"), "Theme switch interaction is missing");
 assert(ts.includes("data-cyber-node"), "Cyber node interaction is missing");
 assert(ts.includes("data-trend-cycle"), "Trend cycle interaction is missing");
+assert(ts.includes("data-portfolio-filter"), "Portfolio filter interaction is missing");
 assert(ts.includes("data-template-link"), "Template transition interaction is missing");
 assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
 
@@ -157,7 +172,8 @@ assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
   "initCarousels",
   "initPriceToggles",
   "initVariantSelectors",
-  "initDragCards"
+  "initDragCards",
+  "initPortfolioDemo"
 ].forEach((initializer) => {
   assert(ts.includes(initializer), `src interaction modules missing initializer: ${initializer}`);
 });
@@ -175,8 +191,10 @@ assert(css.includes("prefers-reduced-motion"), "Reduced-motion handling is missi
 assert(css.includes("[data-modern-theme=\"dark\"]"), "Modern dark theme styles are missing");
 assert(css.includes("[data-scene=\"cyber\"]"), "Cyber scene styles are missing");
 assert(css.includes("[data-scene=\"trend\"]"), "Trend scene styles are missing");
+assert(css.includes("[data-scene=\"portfolio\"]"), "Portfolio scene styles are missing");
 assert(css.includes(".interaction-lab"), "Interaction lab styles are missing");
 assert(css.includes(".modal-backdrop"), "Modal styles are missing");
+assert(css.includes(".portfolio-case-grid"), "Portfolio case grid styles are missing");
 assert(!css.includes("letter-spacing: -"), "Negative letter spacing is not allowed");
 
 [

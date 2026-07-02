@@ -124,3 +124,38 @@ export function initTrendDemo(): void {
     addTrailPoint(event.clientX, event.clientY);
   });
 }
+
+export function initPortfolioDemo(): void {
+  const reel = document.querySelector<HTMLElement>("[data-portfolio-reel]");
+  const reelToggle = document.querySelector<HTMLButtonElement>("[data-portfolio-reel-toggle]");
+  if (reel && reelToggle) {
+    reelToggle.addEventListener("click", () => {
+      const paused = reel.classList.toggle("is-paused");
+      reelToggle.setAttribute("aria-pressed", String(!paused));
+      reelToggle.textContent = paused ? "Play reel" : "Pause reel";
+    });
+  }
+
+  const filters = [...document.querySelectorAll<HTMLButtonElement>("[data-portfolio-filter]")];
+  const cards = [...document.querySelectorAll<HTMLElement>("[data-portfolio-card]")];
+  if (!filters.length || !cards.length) return;
+
+  function setFilter(filter: string): void {
+    filters.forEach((button) => {
+      const active = button.dataset.portfolioFilter === filter;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    cards.forEach((card) => {
+      const categories = (card.dataset.category || "").split(/\s+/);
+      const visible = filter === "all" || categories.includes(filter);
+      card.hidden = !visible;
+      card.classList.toggle("is-filtered-out", !visible);
+    });
+    showToast(filter === "all" ? "显示全部作品" : `筛选：${filter}`);
+  }
+
+  filters.forEach((button) => {
+    button.addEventListener("click", () => setFilter(button.dataset.portfolioFilter || "all"));
+  });
+}
