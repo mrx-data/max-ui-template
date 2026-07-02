@@ -1,6 +1,6 @@
 # ui-template
 
-一个静态前端 UI 模板展示站。当前版本把四套不同风格的 UI 模板做成可独立打开的交互样板，提供可复制给 AI 使用的提示词，并用轻量 canvas 视觉让网站本身保持高级、简约、大气。
+一个静态前端 UI 模板展示站。当前版本把四套不同风格的 UI 模板做成可独立打开的交互样板，提供可复制给 AI 使用的提示词，并用轻量 canvas 视觉让网站本身保持高级、简约、大气。个人作品集模板额外使用本地打包的 GSAP + ScrollTrigger 编排 opening animation、滚动标题进场、卡片 stagger、图片 reveal 和轻微 parallax。
 
 ## Files
 
@@ -15,6 +15,7 @@
 | `src/main.ts` | Vite TypeScript entry that initializes scenes and interactions |
 | `src/canvas.ts` | Canvas scene registry and motion state |
 | `src/interactions/` | Modular interaction initializers for copy, tabs, modals, forms, carousel, and template demos |
+| `src/interactions/portfolio-motion.ts` | GSAP + ScrollTrigger motion system for the personal portfolio page |
 | `vite.config.ts` | Vite multi-page build inputs |
 | `scripts/validate-site.mjs` | Static validation for required structure |
 | `AGENTS.md` | Agent workflow, boundaries, verification, write-back |
@@ -37,4 +38,4 @@ Use `npm run dev` for local development. Production output is generated into `di
 - Each template includes a preview, motion tags, interaction logic, and reusable prompt.
 - Prompt copy buttons work without a backend.
 - Canvas scenes are decorative, lightweight, and non-blocking.
-- Vite and TypeScript are development/build-time tools only; the site still has no backend, secrets, or external runtime services.
+- Vite, TypeScript, and GSAP are bundled locally; the site still has no backend, secrets, CDN scripts, or external runtime services.

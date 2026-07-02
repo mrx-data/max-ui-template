@@ -9,6 +9,7 @@ import {
   initTabs,
   initTemplateLinks
 } from "./interactions/common";
+import { initPortfolioMotion } from "./interactions/portfolio-motion";
 import {
   initCyberDemo,
   initDragCards,
@@ -33,3 +34,4 @@ initVariantSelectors();
 initDragCards();
 initTrendDemo();
 initPortfolioDemo();
+initPortfolioMotion();

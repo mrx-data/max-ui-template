@@ -11,8 +11,17 @@
   <body data-page="detail" data-scene="portfolio">
     <canvas id="atmosphere" aria-hidden="true"></canvas>
     <div class="transition-layer" aria-hidden="true"></div>
+    <div class="portfolio-opening" data-portfolio-opening aria-hidden="true">
+      <div class="opening-grain"></div>
+      <div class="opening-copy">
+        <span class="opening-label">PORTFOLIO SYSTEM / 2026</span>
+        <span class="opening-word">MAX CREATIVE INDEX</span>
+      </div>
+      <div class="opening-slit"></div>
+      <span class="opening-counter" data-opening-counter>00</span>
+    </div>
     <div class="page-shell detail-shell portfolio-shell">
-      <header class="topbar floating-topbar portfolio-topbar">
+      <header class="topbar floating-topbar portfolio-topbar" data-motion-nav>
         <a class="brand portfolio-brand" href="../index.html" data-template-link aria-label="Back to ui-template">
           <span class="brand-mark"></span>
           <span>ui-template</span>
@@ -26,26 +35,30 @@
       </header>
 
       <main>
-        <section class="detail-hero portfolio-hero" aria-labelledby="portfolio-title">
+        <section class="detail-hero portfolio-hero" data-portfolio-hero aria-labelledby="portfolio-title">
           <div class="detail-copy portfolio-copy">
-            <p class="eyebrow">04 / Personal Portfolio</p>
-            <h1 id="portfolio-title">把简历升级成一个会讲故事的个人网站。</h1>
-            <p class="lede">
-              这套样板按照教程中的方法搭建：先有完整网站骨架，再强化首屏视觉、固定磨砂导航、主色统一、卡片发光、背景动效和模块进场动画。
+            <p class="eyebrow" data-hero-item>04 / Personal Portfolio</p>
+            <h1 id="portfolio-title" class="portfolio-hero-title" data-hero-title>
+              <span class="title-line"><span>AI Portfolio</span></span>
+              <span class="title-line"><span>Creative</span></span>
+              <span class="title-line"><span>Systems</span></span>
+            </h1>
+            <p class="lede" data-hero-item>
+              把简历升级成一个会讲故事的个人网站。完整开场动画、强视觉标题进场、showreel 视觉叙事、案例筛选和慢节奏滚动编排，让它更像高端设计师作品集或创意机构官网。
             </p>
-            <div class="hero-actions">
+            <div class="hero-actions" data-hero-item>
               <a class="open-button" href="#portfolio-work">查看精选作品</a>
               <button class="copy-button" type="button" data-modal-trigger="portfolio-case">打开案例预览</button>
             </div>
           </div>
 
-          <div class="portfolio-stage interactive-demo" aria-label="Portfolio hero demo">
-            <div class="portfolio-reel" data-portfolio-reel>
+          <div class="portfolio-stage interactive-demo" data-motion-stage data-motion-parallax aria-label="Portfolio hero demo">
+            <div class="portfolio-reel" data-portfolio-reel data-stagger-item>
               <div class="reel-toolbar">
                 <span>AI CREATIVE DIRECTOR</span>
                 <button type="button" data-portfolio-reel-toggle aria-pressed="true">Pause reel</button>
               </div>
-              <div class="reel-frame" aria-hidden="true">
+              <div class="reel-frame" data-motion-image aria-hidden="true">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -55,7 +68,7 @@
                 <span>Product design / AI workflow / visual systems</span>
               </div>
             </div>
-            <aside class="portfolio-profile-card">
+            <aside class="portfolio-profile-card" data-stagger-item>
               <span class="portrait-mark">MX</span>
               <p>Available for AI product, portfolio systems, and creative engineering.</p>
               <div class="profile-metrics">
@@ -66,8 +79,9 @@
           </div>
         </section>
 
-        <section id="portfolio-work" class="interaction-lab portfolio-work" aria-labelledby="portfolio-work-title">
-          <div class="lab-heading portfolio-heading">
+        <section id="portfolio-work" class="interaction-lab portfolio-work" data-motion-section aria-labelledby="portfolio-work-title">
+          <p class="portfolio-display-title" data-motion-title aria-hidden="true">Selected Work</p>
+          <div class="lab-heading portfolio-heading" data-stagger-item>
             <div>
               <p class="eyebrow">Selected Work</p>
               <h2 id="portfolio-work-title">像真实作品集一样展示案例</h2>
@@ -81,19 +95,31 @@
           </div>
 
           <div class="portfolio-case-grid">
-            <article class="portfolio-case-card" data-portfolio-card data-category="product ai">
+            <article class="portfolio-case-card" data-portfolio-card data-stagger-item data-category="product ai">
+              <div class="portfolio-case-visual visual-nova" data-motion-image data-motion-parallax aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
               <span>01</span>
               <h3>Nova Agent Launch</h3>
               <p>AI agent 产品官网、交互 demo 和上线叙事，展示从提示词到界面的完整能力。</p>
               <button type="button" data-modal-trigger="portfolio-case">查看案例</button>
             </article>
-            <article class="portfolio-case-card" data-portfolio-card data-category="product visual">
+            <article class="portfolio-case-card" data-portfolio-card data-stagger-item data-category="product visual">
+              <div class="portfolio-case-visual visual-signal" data-motion-image data-motion-parallax aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
               <span>02</span>
               <h3>Signal Dashboard</h3>
               <p>实时任务系统视觉改版，重点是信息层级、边缘发光和低噪声动效。</p>
               <button type="button" data-modal-trigger="portfolio-case">查看案例</button>
             </article>
-            <article class="portfolio-case-card" data-portfolio-card data-category="ai visual">
+            <article class="portfolio-case-card" data-portfolio-card data-stagger-item data-category="ai visual">
+              <div class="portfolio-case-visual visual-creator" data-motion-image data-motion-parallax aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
               <span>03</span>
               <h3>Creator OS</h3>
               <p>创作者个人品牌系统，用网站呈现内容、作品、AI 工作流和商业合作入口。</p>
@@ -102,28 +128,30 @@
           </div>
         </section>
 
-        <section id="portfolio-process" class="portfolio-process" aria-labelledby="portfolio-process-title">
-          <div>
+        <section id="portfolio-process" class="portfolio-process" data-motion-section aria-labelledby="portfolio-process-title">
+          <p class="portfolio-display-title" data-motion-title aria-hidden="true">Process</p>
+          <div class="portfolio-process-copy" data-stagger-item>
             <p class="eyebrow">Build Method</p>
             <h2 id="portfolio-process-title">教程方法拆成可复用流程</h2>
           </div>
           <ol class="portfolio-timeline">
-            <li><b>01</b><span>先搭完整骨架：首屏、作品、经历、能力、联系。</span></li>
-            <li><b>02</b><span>再用参考图和文字标注优化首屏排版，而不是让 AI 猜审美。</span></li>
-            <li><b>03</b><span>加入固定磨砂导航、统一主色、hover 反馈和卡片边缘发光。</span></li>
-            <li><b>04</b><span>最后补背景动效、模块进场动画、性能检查和部署准备。</span></li>
+            <li data-stagger-item><b>01</b><span>先搭完整骨架：首屏、作品、经历、能力、联系。</span></li>
+            <li data-stagger-item><b>02</b><span>再用参考图和文字标注优化首屏排版，而不是让 AI 猜审美。</span></li>
+            <li data-stagger-item><b>03</b><span>加入固定磨砂导航、统一主色、hover 反馈和卡片边缘发光。</span></li>
+            <li data-stagger-item><b>04</b><span>最后补 opening animation、滚动编排、图片 reveal、性能检查和部署准备。</span></li>
           </ol>
         </section>
 
-        <section id="portfolio-contact" class="portfolio-contact interaction-lab" aria-labelledby="portfolio-contact-title">
-          <div class="lab-heading portfolio-heading">
+        <section id="portfolio-contact" class="portfolio-contact interaction-lab" data-motion-section aria-labelledby="portfolio-contact-title">
+          <p class="portfolio-display-title" data-motion-title aria-hidden="true">Contact</p>
+          <div class="lab-heading portfolio-heading" data-stagger-item>
             <div>
               <p class="eyebrow">Contact</p>
               <h2 id="portfolio-contact-title">作品集需要明确的下一步行动</h2>
             </div>
           </div>
           <div class="lab-grid portfolio-contact-grid">
-            <form class="demo-form portfolio-form" data-form-demo data-success-message="合作请求已记录">
+            <form class="demo-form portfolio-form" data-form-demo data-stagger-item data-success-message="合作请求已记录">
               <p class="eyebrow">Collaboration Brief</p>
               <label>
                 <span>你的名字</span>
@@ -137,7 +165,7 @@
               </label>
               <button class="open-button" type="submit">发送合作意向</button>
             </form>
-            <aside class="portfolio-availability">
+            <aside class="portfolio-availability" data-stagger-item data-motion-parallax>
               <span>NOW BOOKING</span>
               <h3>July / 2 slots</h3>
               <p>适合自由职业者、设计师、AI 创作者和产品经理展示真实作品、过程和能力。</p>
@@ -145,37 +173,39 @@
           </div>
         </section>
 
-        <section class="logic-section" data-interaction-logic aria-labelledby="portfolio-logic">
-          <div>
+        <section class="logic-section" data-interaction-logic data-motion-section aria-labelledby="portfolio-logic">
+          <p class="portfolio-display-title" data-motion-title aria-hidden="true">Logic</p>
+          <div data-stagger-item>
             <p class="eyebrow">Interaction Logic</p>
             <h2 id="portfolio-logic">真实作品集网站的交互逻辑</h2>
           </div>
           <div class="logic-grid">
-            <article>
+            <article data-stagger-item>
               <span>01</span>
-              <h3>Sticky glass nav</h3>
-              <p>导航常驻顶部，用磨砂玻璃和锚点链接支撑真实网站浏览路径。</p>
+              <h3>Opening timeline</h3>
+              <p>首屏先播放完整开场，计数、遮罩、标题压缩归位和作品视觉依次进入。</p>
             </article>
-            <article>
+            <article data-stagger-item>
               <span>02</span>
-              <h3>Showreel control</h3>
-              <p>首屏视觉模拟视频作品集，可暂停/播放，避免静态简历感。</p>
+              <h3>Scroll choreography</h3>
+              <p>每个模块先让英文大标题大幅进入，再 stagger 出现卡片，保持慢节奏高级感。</p>
             </article>
-            <article>
+            <article data-stagger-item>
               <span>03</span>
-              <h3>Case filtering</h3>
-              <p>作品卡按 Product、AI、Visual 分类筛选，突出能力结构。</p>
+              <h3>Reveal and parallax</h3>
+              <p>作品图像用遮罩揭开和轻微视差，强化真实作品集的图像叙事。</p>
             </article>
           </div>
         </section>
 
-        <section class="prompt-lab prompt-lab-portfolio" aria-labelledby="portfolio-prompt-title">
-          <div>
+        <section class="prompt-lab prompt-lab-portfolio" data-motion-section aria-labelledby="portfolio-prompt-title">
+          <p class="portfolio-display-title" data-motion-title aria-hidden="true">Prompt</p>
+          <div data-stagger-item>
             <p class="eyebrow">Prompt</p>
             <h2 id="portfolio-prompt-title">个人作品集网站提示词</h2>
           </div>
-          <pre id="prompt-portfolio-detail" class="prompt-text prompt-text-large"><code>设计一个真实可用的个人作品集网站，而不是普通 PDF 简历网页。网站面向 AI 产品设计师 / 创意开发者 / 独立创作者，目标是展示作品、过程、AI 能力和合作入口。先搭完整网站骨架：固定磨砂导航、强视觉首屏、showreel/视频感背景、精选作品、经历方法论、能力标签、联系表单。风格使用暗色空间、深红主色、细颗粒噪声、卡片边缘发光和高级 hover 动效；每个模块都有进场动画，但不牺牲可读性和性能。作品模块支持筛选和案例弹窗，联系表单有本地校验和成功反馈。最终效果要像一个真实上线的网站，可以滚动、浏览、互动、复制内容并用于个人品牌展示。</code></pre>
-          <button class="copy-button" type="button" data-copy="prompt-portfolio-detail">复制提示词</button>
+          <pre id="prompt-portfolio-detail" class="prompt-text prompt-text-large" data-stagger-item><code>设计一个真实可用的高端设计师作品集 / 创意机构官网，而不是普通 PDF 简历网页。网站面向 AI 产品设计师 / 创意开发者 / 独立创作者，目标是展示作品、过程、AI 能力和合作入口。首屏必须有完整 opening animation：计数、遮罩揭开、标题大幅位移进入、压缩后丝滑归位，showreel/视频感视觉随后 reveal。页面滚动到每个模块时，英文大标题先大幅进场，卡片再依次 stagger 出现，作品图片要有遮罩 reveal 和轻微 parallax。整体动效夸张一点但高级，节奏偏慢，缓动丝滑，避免廉价弹跳；使用暗色空间、深红主色、细颗粒噪声、卡片边缘发光和高性能 transform/opacity/clip-path 动画。作品模块支持筛选和案例弹窗，联系表单有本地校验和成功反馈。最终效果要像一个真实上线的网站，可以滚动、浏览、互动、复制内容并用于个人品牌展示。</code></pre>
+          <button class="copy-button" type="button" data-copy="prompt-portfolio-detail" data-stagger-item>复制提示词</button>
         </section>
       </main>
     </div>

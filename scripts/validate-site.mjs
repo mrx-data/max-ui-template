@@ -26,6 +26,7 @@ const requiredFiles = [
   "src/dom.ts",
   "src/canvas.ts",
   "src/interactions/common.ts",
+  "src/interactions/portfolio-motion.ts",
   "src/interactions/templates.ts",
   "templates/modern-minimal.html",
   "templates/cyber-future.html",
@@ -52,6 +53,7 @@ const sourceFiles = [
   "src/dom.ts",
   "src/canvas.ts",
   "src/interactions/common.ts",
+  "src/interactions/portfolio-motion.ts",
   "src/interactions/templates.ts",
   "vite.config.ts"
 ];
@@ -73,6 +75,7 @@ assert(packageJson.scripts?.build?.includes("vite build"), "npm run build must r
 assert(packageJson.scripts?.typecheck?.includes("tsc --noEmit"), "typecheck script must run TypeScript");
 assert(packageJson.devDependencies?.vite, "Vite devDependency is missing");
 assert(packageJson.devDependencies?.typescript, "TypeScript devDependency is missing");
+assert(packageJson.dependencies?.gsap, "GSAP dependency is missing for portfolio motion");
 assert(read("vite.config.ts").includes("templates/modern-minimal.html"), "Vite config must include modern detail page input");
 assert(read("vite.config.ts").includes("templates/cyber-future.html"), "Vite config must include cyber detail page input");
 assert(read("vite.config.ts").includes("templates/trend-culture.html"), "Vite config must include trend detail page input");
@@ -128,6 +131,11 @@ const interactionRequirements = {
     "data-portfolio-reel-toggle",
     "data-portfolio-filter",
     "data-portfolio-card",
+    "data-portfolio-opening",
+    "data-motion-section",
+    "data-motion-title",
+    "data-motion-image",
+    "data-motion-parallax",
     "data-form-demo",
     "data-modal=\"portfolio-case\""
   ]
@@ -161,6 +169,9 @@ assert(ts.includes("data-theme-option"), "Theme switch interaction is missing");
 assert(ts.includes("data-cyber-node"), "Cyber node interaction is missing");
 assert(ts.includes("data-trend-cycle"), "Trend cycle interaction is missing");
 assert(ts.includes("data-portfolio-filter"), "Portfolio filter interaction is missing");
+assert(ts.includes("ScrollTrigger"), "Portfolio ScrollTrigger motion is missing");
+assert(ts.includes("data-portfolio-opening"), "Portfolio opening animation is missing");
+assert(ts.includes("data-motion-section"), "Portfolio scroll motion sections are missing");
 assert(ts.includes("data-template-link"), "Template transition interaction is missing");
 assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
 
@@ -173,7 +184,8 @@ assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
   "initPriceToggles",
   "initVariantSelectors",
   "initDragCards",
-  "initPortfolioDemo"
+  "initPortfolioDemo",
+  "initPortfolioMotion"
 ].forEach((initializer) => {
   assert(ts.includes(initializer), `src interaction modules missing initializer: ${initializer}`);
 });
@@ -181,6 +193,7 @@ assert(ts.includes("navigator.clipboard"), "Clipboard copy path is missing");
 [
   "src/canvas.ts",
   "src/interactions/common.ts",
+  "src/interactions/portfolio-motion.ts",
   "src/interactions/templates.ts"
 ].forEach((modulePath) => {
   assert(read("src/main.ts").includes(modulePath.replace("src/", "./").replace(".ts", "")), `src/main.ts must import ${modulePath}`);
@@ -192,6 +205,8 @@ assert(css.includes("[data-modern-theme=\"dark\"]"), "Modern dark theme styles a
 assert(css.includes("[data-scene=\"cyber\"]"), "Cyber scene styles are missing");
 assert(css.includes("[data-scene=\"trend\"]"), "Trend scene styles are missing");
 assert(css.includes("[data-scene=\"portfolio\"]"), "Portfolio scene styles are missing");
+assert(css.includes(".portfolio-opening"), "Portfolio opening styles are missing");
+assert(css.includes(".portfolio-display-title"), "Portfolio display title styles are missing");
 assert(css.includes(".interaction-lab"), "Interaction lab styles are missing");
 assert(css.includes(".modal-backdrop"), "Modal styles are missing");
 assert(css.includes(".portfolio-case-grid"), "Portfolio case grid styles are missing");

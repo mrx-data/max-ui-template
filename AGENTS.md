@@ -4,7 +4,7 @@
 
 ui-template is a static frontend UI prompt gallery at `/Users/echo/Documents/work_develop/ui-template`.
 
-The current version shows four different UI styles on the homepage and opens each style in a dedicated interactive detail page. Each template includes a visual demo, interaction logic, canvas scene, and reusable prompt. The site uses HTML, CSS, TypeScript modules, Vite, and Canvas. It has no backend, database, external scripts, or runtime service dependencies.
+The current version shows four different UI styles on the homepage and opens each style in a dedicated interactive detail page. Each template includes a visual demo, interaction logic, canvas scene, and reusable prompt. The site uses HTML, CSS, TypeScript modules, Vite, Canvas, and a locally bundled GSAP dependency for the personal portfolio motion system. It has no backend, database, CDN scripts, or external runtime service dependencies.
 
 ## Commands
 
@@ -32,6 +32,7 @@ Do not create `.env`, `.env.local`, tokens, cookies, or secret-bearing files unl
 - `src/canvas.ts` owns the canvas scene registry and trail state.
 - `src/interactions/common.ts` owns shared copy, transition, tabs, accordion, modal, form, carousel, and pricing interactions.
 - `src/interactions/templates.ts` owns modern theme, cyber HUD, trend variant, drag-card, and detail-demo behavior.
+- `src/interactions/portfolio-motion.ts` owns the GSAP + ScrollTrigger opening animation, scroll choreography, stagger, reveal, and parallax behavior for the personal portfolio page.
 - `vite.config.ts` must keep all four HTML files registered as build inputs.
 - `scripts/validate-site.mjs` is the local Sensor for required multi-page Vite/TypeScript structure.
 - Canvas effects must remain decorative and must not reduce text readability.
@@ -39,7 +40,7 @@ Do not create `.env`, `.env.local`, tokens, cookies, or secret-bearing files unl
 
 ## Editing Guidelines
 
-- Keep Vite and TypeScript as build-time tooling. Do not add more npm dependencies unless the user explicitly asks for a new capability.
+- Keep Vite and TypeScript as build-time tooling. GSAP is an approved local dependency for the personal portfolio motion system; do not add more npm dependencies unless the user explicitly asks for a new capability.
 - Keep cards at 8px radius or less.
 - Preserve four clearly distinct styles unless the task is specifically about replacing or expanding them: modern website, cyber future, trend culture, and personal portfolio.
 - Keep dedicated detail pages linked from the homepage with `data-template-link`.
@@ -65,6 +66,7 @@ For UI changes, also perform a manual smoke check:
 - Confirm all four detail pages open.
 - Confirm modern theme switching, cyber node/range controls, and trend visual-cycle controls work.
 - Confirm portfolio showreel toggle, case filtering, modal, and contact form work.
+- Confirm portfolio opening animation, scroll-triggered English display titles, staggered cards, reveal images, and light parallax work without jank.
 - Confirm prompt copy buttons show success feedback.
 - Check mobile-width layout for overflow or clipped text.
 
@@ -81,7 +83,7 @@ Write updates back to Echo Link KB:
 ## Do Not
 
 - Do not read, create, copy, or store real secrets.
-- Do not add external scripts, CDNs, additional npm dependencies, a backend, storage, or deployment config without explicit approval.
+- Do not add external scripts, CDNs, additional npm dependencies beyond the approved local GSAP package, a backend, storage, or deployment config without explicit approval.
 - Do not treat `npm run build` as a visual smoke test; it validates structure/types and produces static output, but still needs browser smoke checks for UI changes.
 - Do not hide the template previews behind a landing page or secondary route.
 - Do not make production deployments unless the user explicitly requests release work.

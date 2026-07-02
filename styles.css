@@ -712,6 +712,10 @@ h1 {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
   }
+
+  .portfolio-opening {
+    display: none !important;
+  }
 }
 
 /* v2 interactive template system */
@@ -812,6 +816,84 @@ body[data-scene="portfolio"]::before {
     linear-gradient(rgba(255, 244, 230, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(216, 75, 87, 0.055) 1px, transparent 1px);
   background-size: 52px 52px;
+}
+
+.portfolio-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff4e6;
+  visibility: hidden;
+  background:
+    radial-gradient(circle at 24% 22%, rgba(216, 75, 87, 0.28), transparent 30%),
+    radial-gradient(circle at 80% 72%, rgba(255, 177, 92, 0.16), transparent 28%),
+    #100609;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.has-portfolio-opening .portfolio-opening {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.opening-grain {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 244, 230, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 244, 230, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle, #000 38%, transparent 72%);
+}
+
+.opening-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 16px;
+  width: min(900px, calc(100% - 48px));
+  overflow: hidden;
+  text-align: center;
+}
+
+.opening-label {
+  color: #ffb15c;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.opening-word {
+  display: block;
+  font-size: clamp(46px, 11vw, 168px);
+  font-weight: 950;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.opening-slit {
+  position: absolute;
+  right: 8vw;
+  bottom: 18vh;
+  left: 8vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 230, 0.8), transparent);
+  box-shadow: 0 0 36px rgba(216, 75, 87, 0.72);
+  transform: scaleX(0);
+}
+
+.opening-counter {
+  position: absolute;
+  right: clamp(24px, 6vw, 92px);
+  bottom: clamp(24px, 6vw, 72px);
+  color: rgba(255, 244, 230, 0.68);
+  font-size: clamp(42px, 9vw, 118px);
+  font-weight: 950;
+  line-height: 0.8;
 }
 
 .transition-layer {
@@ -2366,13 +2448,40 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   min-height: calc(100vh - 96px);
 }
 
-.portfolio-copy h1 {
+.portfolio-copy h1,
+.portfolio-hero-title {
   max-width: 760px;
   font-size: clamp(54px, 7vw, 112px);
   line-height: 0.9;
 }
 
+.portfolio-hero-title {
+  text-transform: uppercase;
+}
+
+.title-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.03em;
+}
+
+.title-line > span {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+.title-line:nth-child(2) > span {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 244, 230, 0.86);
+  text-stroke: 1px rgba(255, 244, 230, 0.86);
+}
+
+.title-line:nth-child(3) > span {
+  color: #ffb15c;
+}
+
 .portfolio-stage {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
   gap: 14px;
@@ -2382,6 +2491,21 @@ body[data-scene="cyber"] .signal-presets button.is-active {
     linear-gradient(rgba(255, 244, 230, 0.04) 1px, transparent 1px),
     rgba(20, 8, 10, 0.72);
   background-size: 26px 26px;
+  overflow: hidden;
+  transform-origin: 50% 80%;
+  will-change: transform, opacity, clip-path;
+}
+
+.portfolio-stage::after {
+  position: absolute;
+  inset: auto 18px 18px auto;
+  width: 180px;
+  height: 180px;
+  content: "";
+  border: 1px solid rgba(255, 177, 92, 0.2);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 177, 92, 0.16), transparent 62%);
+  pointer-events: none;
 }
 
 .portfolio-reel,
@@ -2454,6 +2578,9 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   gap: 12px;
   align-items: stretch;
   min-height: 270px;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  will-change: transform, clip-path;
 }
 
 .reel-frame span {
@@ -2526,6 +2653,25 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   background: rgba(28, 12, 15, 0.7);
 }
 
+.portfolio-display-title {
+  max-width: min(1120px, 100%);
+  margin: 0 0 22px;
+  color: rgba(255, 244, 230, 0.1);
+  font-size: clamp(54px, 11vw, 168px);
+  font-weight: 950;
+  line-height: 0.78;
+  text-transform: uppercase;
+  transform-origin: 0% 50%;
+  will-change: transform, opacity, filter;
+}
+
+.portfolio-work,
+.portfolio-contact,
+.prompt-lab-portfolio,
+body[data-scene="portfolio"] .logic-section {
+  overflow: hidden;
+}
+
 .portfolio-filter {
   display: flex;
   flex-wrap: wrap;
@@ -2548,19 +2694,22 @@ body[data-scene="cyber"] .signal-presets button.is-active {
 }
 
 .portfolio-case-card {
+  position: relative;
   display: grid;
   min-height: 320px;
   gap: 14px;
-  align-content: end;
+  align-content: stretch;
   padding: 18px;
+  overflow: hidden;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     opacity 180ms ease;
+  will-change: transform, opacity, clip-path;
 }
 
 .portfolio-case-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: 0 0 42px rgba(216, 75, 87, 0.28);
 }
 
@@ -2571,6 +2720,82 @@ body[data-scene="cyber"] .signal-presets button.is-active {
 .portfolio-case-card span {
   color: var(--accent-2);
   font-weight: 900;
+}
+
+.portfolio-case-visual {
+  position: relative;
+  min-height: 172px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 244, 230, 0.14);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 26% 20%, rgba(255, 177, 92, 0.28), transparent 28%),
+    linear-gradient(135deg, rgba(216, 75, 87, 0.55), rgba(255, 244, 230, 0.05)),
+    #1b080c;
+  box-shadow: inset 0 0 44px rgba(0, 0, 0, 0.28);
+  transform-origin: 50% 50%;
+  will-change: transform, clip-path;
+}
+
+.portfolio-case-visual::before,
+.portfolio-case-visual::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.portfolio-case-visual::before {
+  inset: 18px;
+  border: 1px solid rgba(255, 244, 230, 0.18);
+}
+
+.portfolio-case-visual::after {
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 230, 0.78), transparent);
+  box-shadow: 0 0 26px rgba(255, 177, 92, 0.45);
+}
+
+.portfolio-case-visual span {
+  position: absolute;
+  display: block;
+  border-color: rgba(255, 244, 230, 0.2);
+}
+
+.portfolio-case-visual span:first-child {
+  top: 22px;
+  left: 22px;
+  width: 42%;
+  height: 48%;
+  border: 1px solid rgba(255, 244, 230, 0.22);
+  background: rgba(255, 244, 230, 0.08);
+}
+
+.portfolio-case-visual span:last-child {
+  right: 24px;
+  bottom: 24px;
+  width: 34%;
+  height: 38%;
+  border-radius: 999px;
+  background: rgba(255, 177, 92, 0.28);
+  box-shadow: 0 0 42px rgba(216, 75, 87, 0.42);
+}
+
+.visual-signal {
+  background:
+    linear-gradient(rgba(255, 244, 230, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 244, 230, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 70% 28%, rgba(216, 75, 87, 0.45), transparent 28%),
+    #13080b;
+  background-size: 18px 18px, 18px 18px, auto, auto;
+}
+
+.visual-creator {
+  background:
+    conic-gradient(from 180deg at 42% 48%, rgba(255, 177, 92, 0.46), rgba(216, 75, 87, 0.55), rgba(255, 244, 230, 0.1), rgba(255, 177, 92, 0.46)),
+    #1a090d;
 }
 
 .portfolio-case-card h3 {
@@ -2591,6 +2816,16 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   gap: 18px;
   margin-top: 18px;
   padding: 22px;
+  overflow: hidden;
+}
+
+.portfolio-process .portfolio-display-title {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+}
+
+.portfolio-process-copy {
+  min-width: 0;
 }
 
 .portfolio-timeline {
@@ -2610,6 +2845,7 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   border: 1px solid rgba(255, 244, 230, 0.12);
   border-radius: 8px;
   background: rgba(255, 244, 230, 0.05);
+  will-change: transform, opacity, clip-path;
 }
 
 .portfolio-timeline b {
@@ -2627,6 +2863,14 @@ body[data-scene="cyber"] .signal-presets button.is-active {
   background:
     radial-gradient(circle at 18% 18%, rgba(216, 75, 87, 0.16), transparent 28%),
     rgba(28, 12, 15, 0.92);
+}
+
+.portfolio-form,
+.portfolio-availability,
+body[data-scene="portfolio"] .logic-grid article,
+.prompt-lab-portfolio .prompt-text,
+.prompt-lab-portfolio .copy-button {
+  will-change: transform, opacity, clip-path;
 }
 
 .portfolio-availability {
@@ -2705,15 +2949,41 @@ body[data-scene="portfolio"] .demo-form input {
   .portfolio-case-grid {
     grid-template-columns: 1fr;
   }
+
+  .portfolio-process .portfolio-display-title {
+    grid-column: auto;
+  }
 }
 
 @media (max-width: 700px) {
-  .portfolio-copy h1 {
+  .portfolio-copy h1,
+  .portfolio-hero-title {
     font-size: clamp(38px, 13vw, 56px);
+  }
+
+  .opening-word {
+    font-size: clamp(42px, 18vw, 86px);
+  }
+
+  .opening-copy {
+    text-align: left;
+  }
+
+  .opening-counter {
+    font-size: clamp(38px, 18vw, 82px);
+  }
+
+  .portfolio-display-title {
+    font-size: clamp(44px, 18vw, 84px);
+    line-height: 0.86;
   }
 
   .portfolio-topbar {
     top: 8px;
+  }
+
+  .portfolio-case-visual {
+    min-height: 150px;
   }
 
   .reel-toolbar,
